@@ -1,0 +1,24 @@
+.container
+	.row
+		.col-4
+			h3 商品詳細
+			= attachment_image_tag @product, :image, size: "200x200", fallback: "no_image.jpg"
+		.col-4
+			table.table
+				tr
+					th 商品名
+					td= @product.name
+				tr
+					th 商品説明
+					td= @product.description
+				tr
+					th ジャンル
+					td @product.genre.name
+				tr
+					th 税込価格（税抜価格）
+					td= @product.price * 1.1
+						( = @product.price )
+				tr
+					th 販売ステータス
+					td= @product.sales_status
+= link_to "編集する", @product, class: "btn btn-primary"

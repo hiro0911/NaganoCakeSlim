@@ -1,0 +1,24 @@
+= form_with model: @product, local: true do |f|
+	.container
+		.row
+			.col-4
+				= attachment_image_tag @product, :image, size: "200x200", fallback: "no_image.jpg"
+				= f.attachment_field :image
+			.col-4
+				table.table
+					tr
+						th= f.label :name, "商品名"
+						td= f.text_field :name
+					tr
+						th= f.label :description, "商品説明"
+						td= f.text_area :description
+					tr
+						th= f.label :genre_id, "ジャンル"
+						td= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--"
+					tr
+						td= f.label :price, "税抜価格"
+						th= f.text_field :price
+					tr
+						td= f.label :sales_status, "販売ステータス"
+						th= f.select :sales_status, [["販売中", true], ["販売停止", false]], include_blank: "--選択してください--"
+		= f.submit "新規登録", class: "btn btn-primary"

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  namespace :admin do
     root "orders#top"  #管理者topページ
-    resources :product, :except => :destroy
+    resources :products, :except => :destroy
     resources :genres, :only => [:edit, :update, :create, :index]
     resources :customers, :only => [:edit, :update, :show, :index]
     resources :ordered_products, :only => :update
