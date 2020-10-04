@@ -1,0 +1,12 @@
+.container
+	.row
+		.col-8
+			h3 ジャンル一覧・追加
+			= form_with model: @genre, url: "/admin/genres/#{@genre.id}", method: :patch, local: true do |f|
+				= f.label :name, "ジャンル"
+				= f.text_field :name
+				= f.radio_button :effectiveness, :有効, checked: true
+				| 有効
+				= f.radio_button :effectiveness, :無効
+				| 無効
+				= f.submit "変更を保存する", class: "btn btn-primary"
