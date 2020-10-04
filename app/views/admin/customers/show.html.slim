@@ -1,0 +1,27 @@
+.container
+	.row
+		.col-8
+			tr
+				th 顧客ID
+				td @customer.id
+					| #(@customer.admission_status)
+			tr
+				th 氏名
+				td @customer.full_name_kanji
+			tr
+				th フリガナ
+				td @customer.full_name_kana
+			tr
+				th 郵便番号
+				td @customer.postcode
+			tr
+				th 住所
+				td @customer.address
+			tr
+				th 電話番号
+				td @customer.tel
+			tr
+				th メールアドレス
+				td @customer.email
+	= link_to "編集する", admin_customer_path(@customer)
+	= link_to "注文履歴一覧を見る", admin_orders_path(@customer)

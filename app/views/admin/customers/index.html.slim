@@ -1,0 +1,15 @@
+.container
+	.row
+		.col-10
+			table.table
+				tr
+					th 会員ID
+					th 氏名
+					th メールアドレス
+					th ステータス
+				- @customers.each do |customer|
+					tr
+						td customer.id
+						td customer.name
+						td customer.email
+						td customer.admission_status

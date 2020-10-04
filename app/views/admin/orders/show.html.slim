@@ -1,0 +1,32 @@
+.container
+	.row
+		.col-12
+			h3 注文履歴詳細
+			table.table
+				tr
+					th 購入者
+					td @order.customer.name
+				tr
+					th 配送先
+					td @order.full_address
+				tr
+					th 支払い方法
+					td @order.payment
+				tr
+					th 注文ステータス
+					= form_with model: @order, url: "/admin/orders/#{@order.id}" do |f|
+						td= f.select :order_status, [["入金待ち", "入金待ち"], ["入金確認", "入金確認"], ["製作中", "製作中"], ["発送準備中", "発送準備中"], ["発送済み", "発送済み"]]  
+			table.table
+				tr
+					th 商品名
+					th 単価（税込）
+					th 数量
+					th 小計
+					th 製作ステータス
+					th
+				- @ordered_products.each do |ordered_product|	
+					tr
+						td ordered_product.product.name
+						td ordered_product.price
+						td ordered_product.count
+						td ordered_product.
