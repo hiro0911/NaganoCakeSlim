@@ -1,0 +1,23 @@
+.container
+	.row
+		.col-4
+			table.table
+				tr
+					th ジャンル検索
+				- @genres.each do |genre|
+					tr
+						td= genre.name
+		.col-8
+			p ようこそ,NaganoCakeSlimへ！
+			p このサイトは、ケーキ販売のECサイトになります。
+			p 会員ではない方も商品の閲覧はできますが、
+			p 購入には会員登録が必要になります。
+			h3 オススメ商品
+			table.table
+				tr
+					- @products.each do |product|
+						td
+							= link_to product do 
+								p= attachment_image_tag @product, :image, size: "150x150", fallback: "no_image.jpg"
+								p= product.name
+								p= product.price

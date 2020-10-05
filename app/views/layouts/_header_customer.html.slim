@@ -1,0 +1,13 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+	= link_to "NaganoCakeSlim", root_path, class: "navbar-brand"
+	button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+	.collapse.navbar-collapse#navbarNavAltMarkup
+		.navbar-nav
+			.nav-item.nav-link 
+				| ようこそ、
+				= current_customer.full_name_kanji
+				| さん！
+			= link_to "マイページ", customer_path(current_customer), class: "nav-item nav-link"
+			= link_to "商品一覧", products_path, class: "nav-item nav-link"
+			= link_to "カート", cart_items_path, class: "nav-item nav-link"
+			= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-item nav-link"

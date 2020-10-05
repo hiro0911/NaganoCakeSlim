@@ -8,5 +8,10 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-  	== render partial: "layouts/header_admin"
+  	- if customer_signed_in?
+  		== render partial: "layouts/header_customer"
+  	- elsif admin_signed_in?
+  		== render partial: "layouts/header_admin"
+  	- else
+  		== render partial: "layouts/header_logout"
     = yield

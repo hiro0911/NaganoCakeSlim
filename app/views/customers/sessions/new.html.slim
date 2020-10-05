@@ -1,0 +1,20 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .container
+    .row
+      .col-12
+        h3 会員の方はこちらからログイン
+        table.teble
+          tr
+            th メールアドレス
+            td= f.text_field :email
+          tr
+            th パスワード
+            td= f.text_field :password
+          tr
+            td= f.submit "ログイン", class: "btn btn-primary"
+        p 登録がお済みでない方
+        p 
+          = link_to "こちら", new_customer_registration_path
+          | から新規登録を行ってください。
+
+

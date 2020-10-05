@@ -1,0 +1,9 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+	= link_to "NaganoCakeSlim", root_path, class: "navbar-brand"
+	button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+	.collapse.navbar-collapse#navbarNavAltMarkup
+		.navbar-nav
+			= link_to "商品一覧", products_path, class: "nav-item nav-link"
+			= link_to "新規登録", new_customer_registration_path, class: "nav-item nav-link"
+			= link_to "ログイン", new_customer_session_path, class: "nav-item nav-link"
+				
