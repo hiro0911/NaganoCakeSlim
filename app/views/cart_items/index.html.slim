@@ -1,0 +1,32 @@
+.container
+	.row
+		.col-12 
+			h3 ショッピングカート
+			= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: { confirm: "カートを空にします。よろしいですか？"}, class: "btn btn-danger"
+			table.table
+				tr
+					th 商品名
+					th 単価（税込）
+					th 数量
+					th 小計
+					th
+				- @cart_items.each do |cart_item|
+					tr
+						td
+							= attachment_image_tag cart_item.product, :image, size: "50x50", fallback: "no_image.jpg"
+							= cart_item.product.name
+						td= cart_item.product.tax_includ
+						td 
+							= form_with model: cart_item do |f|
+								= f.number_field :count
+								= f.submit "変更"
+						td= cart_item.subtotal
+						td= link_to "削除", cart_item_path(cart_item), method: :delete, class: "btn btn-danger"
+			= link_to "買い物を続ける", products_path, class: "btn btn-primary"
+			table.table.col-3
+				tr
+					th 合計金額
+					td
+						= total_price(@cart_items)
+						| 円
+			= link_to "情報入力に進む", new_order_path, class: "btn btn-success"
