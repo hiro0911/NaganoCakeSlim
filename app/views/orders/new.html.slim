@@ -1,0 +1,38 @@
+.container
+	.row
+		.col-6
+			h3 注文情報入力
+			h3 支払い方法
+			= form_with model:@order, url: orders_confirm_path, method: :post, local: true do |f|
+				= f.radio_button :payment, "クレジットカード", checked: true
+				| クレジットカード
+				br
+				= f.radio_button :payment, "銀行振込"
+				| 銀行振込
+				br
+				h3 お届け先
+				= f.radio_button :addresses, "your_address", checked: true
+				| ご自身の住所
+				br
+				= current_customer.postcode
+				= current_customer.address
+				= current_customer.full_name_kanji
+				br
+				= f.radio_button :addresses, "registered_address"
+				| 登録済み住所から選択
+				br
+				= f.collection_select :delivery_id, @deliveries, :id, :order_address
+				br
+				= f.radio_button :addresses, "new_address"
+				| 新しいお届け先
+				table.table
+					tr
+						th 郵便番号（ハイフンなし）
+						td= f.text_field :postcode
+					tr
+						th 住所
+						td= f.text_field :address
+					tr
+						th 宛名
+						td= f.text_field :name
+				= f.submit "確認画面へ進む", class: "btn btn-primary"
