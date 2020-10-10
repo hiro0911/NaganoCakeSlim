@@ -1,0 +1,33 @@
+.container
+	.row
+		.col-8
+			h3 マイページ
+			| 登録情報
+			= link_to "編集する", edit_customer_path(@customer), class: "btn btn-primary"
+			= link_to "パスワードを変更する", "#", class: "btn btn-primary"
+			table.table
+				tr
+					th 氏名
+					td= @customer.full_name_kanji
+				tr
+					th カナ
+					td= @customer.full_name_kana
+				tr
+					th 郵便番号
+					td= @customer.postcode
+				tr
+					th 住所
+					td= @customer.address
+				tr
+					th 電話番号
+					td= @customer.tel
+				tr
+					th メールアドレス
+					td= @customer.email
+			table.table
+				tr
+					th 配送先
+					td= link_to "一覧を見る", deliveries_path, class: "btn btn-primary"
+				tr
+					th 注文履歴
+					td= link_to "一覧を見る", orders_path, class: "btn btn-primary"

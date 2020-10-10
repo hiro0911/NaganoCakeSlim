@@ -1,0 +1,38 @@
+= form_with model: @customer, local:true do |f|
+  .container
+    .row
+      .col-12
+        h3 新規登録
+        table.table
+          tr
+            th 名前
+            td
+              | （姓）
+              = f.text_field :family_name_kanji
+              
+            td
+              | （名）
+              = f.text_field :first_name_kanji
+          tr
+            th フリガナ
+            td
+              | （セイ）
+              = f.text_field :family_name_kana
+            td
+              | （メイ）
+              = f.text_field :first_name_kana
+          tr
+            th メールアドレス
+            td= f.email_field :email, autofocus: true, autocomplete: "email"
+          tr
+            th 郵便番号（ハイフンなし）
+            td= f.text_field :postcode
+          tr
+            th 住所
+            td= f.text_field :address
+          tr
+            th 電話番号（ハイフンなし）
+            td= f.text_field :tel
+          tr
+            td= f.submit "新規登録", class: "btn btn-lg btn-success"
+        = link_to "退会する", withdrow_customer_path(@customer), class: "btn btn-danger"
