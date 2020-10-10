@@ -1,8 +1,8 @@
 .container
 	.row
-		.col-12
+		.col-8
 			h3 注文情報確認
-			table.table.col-8
+			table.table
 				tr
 					th 商品名
 					th 単価（税込）
@@ -16,7 +16,8 @@
 						td= cart_item.product.tax_includ
 						td= cart_item.count
 						td= cart_item.subtotal
-			table.table.col-4
+		.col-4
+			table.table
 				tr
 					th 送料
 					td= @order.postage
@@ -26,3 +27,20 @@
 				tr
 					th 請求金額
 					td= @order.billing_amount = @order.postage + total_price(@cart_items)
+		.col-8
+			table.table
+				tr
+					th 支払い方法
+					td= @order.payment
+				tr
+					th お届け先
+					td= @order.postcode + @order.address + @order.name
+			= form_with model: @order, local: true do |f|
+				= f.hidden_field :name
+				= f.hidden_field :postcode
+				= f.hidden_field :address
+				= f.hidden_field :payment
+				= f.hidden_field :postage, value: @order.postage
+				= f.hidden_field :billing_amount, value: @order.billing_amount
+				= f.hidden_field :order_status, value: "入金待ち"
+				= f.submit "購入を確定する", class: "btn btn-success"

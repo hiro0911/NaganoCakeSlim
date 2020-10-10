@@ -10,8 +10,9 @@ html
   body
   	- if customer_signed_in?
   		== render partial: "layouts/header_customer"
-  	- elsif admin_signed_in?
   		== render partial: "layouts/header_admin"
+  	/ - elsif admin_signed_in?
+  		
   	- else
   		== render partial: "layouts/header_logout"
     = yield
