@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_074819) do
+ActiveRecord::Schema.define(version: 2020_10_11_081906) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -94,7 +94,9 @@ ActiveRecord::Schema.define(version: 2020_10_03_074819) do
     t.integer "order_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_products_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["order_products_id"], name: "index_orders_on_order_products_id"
   end
 
   create_table "products", force: :cascade do |t|

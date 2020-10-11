@@ -1,0 +1,58 @@
+.container
+	.row
+		.col-8
+			h3 注文履歴詳細
+			table.table
+				tr
+					th 注文情報
+					td 
+				tr
+					th 注文日
+					td= @order.created_at
+				tr
+					th 配送先
+					td
+						= @order.postcode
+						br
+						= @order.address
+						br
+						= @order.name
+				tr
+					th 支払方法
+					td= @order.payment
+				tr
+					th ステータス
+					td= @order_status
+		.col-4
+			table.table
+				tr
+					th 請求情報
+					td
+				tr
+					th 商品合計
+					td= @order.total_price
+				tr
+					th 配送料
+					td= @order.postage
+				tr
+					th ご請求額
+					td= @order.billing_amount
+		.col-12
+			table.table
+				tr
+					th 注文内容
+					td
+					td
+					td
+				tr
+					th 商品
+					th 単価（税込）
+					th 個数
+					th 小計
+				- @order_products.each do |order_product|
+					tr
+						td= order_product.product.name
+						td= order_product.product.tax_includ
+						td= order_product.count
+						td= order_product.subtotal
+
