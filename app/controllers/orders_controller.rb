@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
 															 product_id: cart_item.product_id,
 															 count: cart_item.count,
 															 price: cart_item.subtotal,
-															 production_status: "製作待ち")
+															 production_status: "着手不可")
 			end
 			@cart_items.destroy_all
 			redirect_to orders_thanks_path
